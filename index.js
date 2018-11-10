@@ -30,9 +30,9 @@ const renderPermalink = (slug, opts, state, idx) => {
   state.tokens[idx + 1].children[position[opts.permalinkBefore]](...linkTokens)
 }
 
-const uniqueSlug = (slug, slugs) => {
+const uniqueSlug = (slug, slugs, opts) => {
   let uniq = slug
-  let i = 2
+  let i = opts.uniqueSlugStartIndex
   while (hasProp.call(slugs, uniq)) uniq = `${slug}-${i++}`
   slugs[uniq] = true
   return uniq
@@ -64,7 +64,7 @@ const anchor = (md, opts) => {
         let slug = token.attrGet('id')
 
         if (slug == null) {
-          slug = uniqueSlug(opts.slugify(title), slugs)
+          slug = uniqueSlug(opts.slugify(title), slugs, opts)
           token.attrPush(['id', slug])
         }
 
@@ -82,6 +82,7 @@ const anchor = (md, opts) => {
 anchor.defaults = {
   level: 1,
   slugify,
+  uniqueSlugStartIndex: 1,
   permalink: false,
   renderPermalink,
   permalinkClass: 'header-anchor',

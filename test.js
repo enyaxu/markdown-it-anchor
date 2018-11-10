@@ -44,8 +44,13 @@ equal(
 )
 
 equal(
-  md().use(anchor).render('# Title\n\n## Title'),
+  md().use(anchor, { uniqueSlugStartIndex: 2 }).render('# Title\n\n## Title'),
   '<h1 id="title">Title</h1>\n<h2 id="title-2">Title</h2>\n'
+)
+
+equal(
+  md().use(anchor, { uniqueSlugStartIndex: 1 }).render('# Title\n\n## Title\n\n ### Title'),
+  '<h1 id="title">Title</h1>\n<h2 id="title-1">Title</h2>\n<h3 id="title-2">Title</h3>\n'
 )
 
 equal(
