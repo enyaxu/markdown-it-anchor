@@ -19,6 +19,7 @@ Name              | Description                                                 
 ------------------|----------------------------------------------------------------|-----------------------------------
 `level`           | Minimum level to apply anchors on or array of selected levels. | 1
 `slugify`         | A custom slugification function.                               | See [`index.js`](index.js)
+`uniqueSlugStartIndex`| Used for unique slug start index.													 | 1
 `permalink`       | Whether to add permalinks next to titles.                      | `false`
 `renderPermalink` | A custom permalink rendering function.                         | See [`index.js`](index.js)
 `permalinkClass`  | The class of the permalink anchor.                             | `header-anchor`
